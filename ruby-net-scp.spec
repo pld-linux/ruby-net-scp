@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	tests		# build without tests
+
 %define	gem_name net-scp
 Summary:	A pure Ruby implementation of the SCP client protocol
 Name:		ruby-%{gem_name}
@@ -14,6 +18,7 @@ BuildRequires:	rpmbuild(macros) >= 1.656
 BuildRequires:	ruby-minitest
 BuildRequires:	ruby-mocha
 BuildRequires:	ruby-net-ssh
+BuildRequires:	ruby-rubygems
 %endif
 Requires:	ruby-net-ssh
 BuildArch:	noarch
