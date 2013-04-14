@@ -5,22 +5,21 @@
 %define	gem_name net-scp
 Summary:	A pure Ruby implementation of the SCP client protocol
 Name:		ruby-%{gem_name}
-Version:	1.0.4
+Version:	1.1.0
 Release:	1
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{gem_name}-%{version}.gem
-# Source0-md5:	7fda0eda72b66d99816d516c5fcd4de2
-URL:		http://net-ssh.rubyforge.org/scp
+# Source0-md5:	a7d4ae6a696222a2f4af9fe89bd44886
+URL:		http://rubygems.org/gems/net-scp
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
 %if %{with tests}
-BuildRequires:	ruby-minitest
 BuildRequires:	ruby-mocha
-BuildRequires:	ruby-net-ssh
-BuildRequires:	ruby-rubygems
+BuildRequires:	ruby-net-ssh >= 2.6.5
+BuildRequires:	ruby-test-unit
 %endif
-Requires:	ruby-net-ssh
+Requires:	ruby-net-ssh >= 2.6.5
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -53,7 +52,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README.rdoc CHANGELOG.rdoc
+%doc README.rdoc CHANGES.txt LICENSE.txt
 %dir %{ruby_vendorlibdir}/net
 %{ruby_vendorlibdir}/net/scp.rb
 %{ruby_vendorlibdir}/net/scp/
