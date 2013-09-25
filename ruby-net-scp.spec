@@ -2,18 +2,18 @@
 # Conditional build:
 %bcond_with	tests		# build without tests
 
-%define	gem_name net-scp
+%define	pkgname net-scp
 Summary:	A pure Ruby implementation of the SCP client protocol
-Name:		ruby-%{gem_name}
+Name:		ruby-%{pkgname}
 Version:	1.1.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Languages
-Source0:	http://rubygems.org/gems/%{gem_name}-%{version}.gem
+Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
 # Source0-md5:	a7d4ae6a696222a2f4af9fe89bd44886
 URL:		http://rubygems.org/gems/net-scp
 BuildRequires:	rpm-rubyprov
-BuildRequires:	rpmbuild(macros) >= 1.656
+BuildRequires:	rpmbuild(macros) >= 1.665
 %if %{with tests}
 BuildRequires:	ruby-mocha
 BuildRequires:	ruby-net-ssh >= 2.6.5
@@ -35,17 +35,21 @@ Requires:	%{name} = %{version}-%{release}
 Documentation for %{name}
 
 %prep
-%setup -q -n %{gem_name}-%{version}
+%setup -q -n %{pkgname}-%{version}
 
 %build
+# write .gemspec
+%__gem_helper spec
+
 %if %{with tests}
 ruby -Itest test/test_all.rb
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{ruby_vendorlibdir}
+install -d $RPM_BUILD_ROOT{%{ruby_vendorlibdir},%{ruby_specdir}}
 cp -a lib/* $RPM_BUILD_ROOT%{ruby_vendorlibdir}
+cp -p %{pkgname}-%{version}.gemspec $RPM_BUILD_ROOT%{ruby_specdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -59,6 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{ruby_vendorlibdir}/uri
 %{ruby_vendorlibdir}/uri/open-scp.rb
 %{ruby_vendorlibdir}/uri/scp.rb
+%{ruby_specdir}/net-scp-%{version}.gemspec
 
 %if 0
 %files doc
