@@ -6,7 +6,7 @@
 Summary:	A pure Ruby implementation of the SCP client protocol
 Name:		ruby-%{pkgname}
 Version:	1.1.0
-Release:	3
+Release:	4
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
@@ -57,9 +57,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README.rdoc CHANGES.txt LICENSE.txt
-%dir %{ruby_vendorlibdir}/net
 %{ruby_vendorlibdir}/net/scp.rb
-%{ruby_vendorlibdir}/net/scp/
+%{ruby_vendorlibdir}/net/scp
 %dir %{ruby_vendorlibdir}/uri
 %{ruby_vendorlibdir}/uri/open-scp.rb
 %{ruby_vendorlibdir}/uri/scp.rb
