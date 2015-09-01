@@ -6,7 +6,7 @@
 Summary:	A pure Ruby implementation of the SCP client protocol
 Name:		ruby-%{pkgname}
 Version:	1.1.0
-Release:	5
+Release:	6
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
