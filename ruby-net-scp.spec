@@ -5,12 +5,12 @@
 %define	pkgname net-scp
 Summary:	A pure Ruby implementation of the SCP client protocol
 Name:		ruby-%{pkgname}
-Version:	1.1.2
+Version:	1.2.1
 Release:	1
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
-# Source0-md5:	ef57751e3b9422899b35ec7d110bf3e1
+# Source0-md5:	abeec1cab9696e02069e74bd3eac8a1b
 URL:		http://rubygems.org/gems/net-scp
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.665
